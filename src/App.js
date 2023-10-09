@@ -1,26 +1,66 @@
 import Diena from "./Diena";
 
 function App() {
-    const pirmdienasStundas = [
-        "Sports",
-        "Dabaszinības",
-        "Vēsture",
-        "Krievu valoda"
-    ]
-    const otrdienasStundas = [
-        "Matemātika",
-        "Klases stunda",
-        "Vēsture",
-        "Krievu valoda"
-    ]
+    const visasStundas = [
+        {
+            diena: "Pirmdiena", 
+            stundas: [
+                "Latviešu valoda un literatūra",
+                "Sociālās zinības un vēsture",
+                "Sistēmu programmēšana",
+                "Sistēmu programmēšana"
+            ]
+        },
+        {
+            diena: "Otrdiena", 
+            stundas: [
+                "Latviešu valoda un literatūra",
+                "Sports",
+                "Patstāvīgais Darbs",
+                "Patstāvīgais Darbs"
+            ]
+        },
+        {
+            diena: "Trešdiena", 
+            stundas: [
+                "Valsts aizardzības mācība",
+                "Valsts aizardzības mācība",
+                "Valsts aizardzības mācība",
+                "Valsts aizardzības mācība"
+            ]
+        },
+        {
+            diena: "Ceturtdiena", 
+            stundas: [
+                "Sistēmu programmēšana",
+                "Patstāvīgais darbs",
+                "Latviešu valoda un literatūra",
+                "Sociālās zinības un vēsture"
+            ]
+        },
+        {
+            diena: "Piektdiena", 
+            stundas: [
+                "Fizika",
+                "Sistēmu programmēšana",
+                "Angļu valoda"
+            ]
+        }
+    ];
+
+    const dienasJSX = visasStundas.map((diena, indekss) => {
+        return (
+            <div>
+                <Diena key={indekss} diena={diena.diena} stundas={diena.stundas} />
+            </div>
+        );
+    });
     return (
         <>
-            <div>
-                <Diena diena="Pirmdiena" stundas={pirmdienasStundas} />
-                <Diena diena="Otrdiena" stundas={otrdienasStundas} />
-            </div>
+            {dienasJSX}
         </>
     );
+
 }
 
 export default App;
