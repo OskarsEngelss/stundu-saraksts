@@ -1,4 +1,5 @@
 import Diena from "./Diena";
+import './App.css';
 
 function App() {
     const visasStundas = [
@@ -50,7 +51,7 @@ function App() {
 
     const dienasJSX = visasStundas.map((diena, indekss) => {
         return (
-            <div>
+            <div class="dienasDiv">
                 <Diena key={indekss} diena={diena.diena} stundas={diena.stundas} />
             </div>
         );
