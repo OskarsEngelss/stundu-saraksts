@@ -1,0 +1,24 @@
+.violets {
+    color: darkred;
+}
+
+h2 {
+    margin: 15px 0 0 0;
+}
+
+ul {
+    padding: 0px 20px 0px 20px;
+}
+
+.diena {
+    margin: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    border: solid black 2px;
+    border-radius: 9px;
+}

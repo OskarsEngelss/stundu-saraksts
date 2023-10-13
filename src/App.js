@@ -1,5 +1,4 @@
 import Diena from "./Diena";
-import './App.css';
 
 function App() {
     const visasStundas = [

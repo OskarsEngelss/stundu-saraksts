@@ -1,0 +1,4 @@
+.gold {
+    --color: rgb(212, 181, 0);
+    color: var(--color);
+}
