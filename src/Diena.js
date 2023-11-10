@@ -2,7 +2,7 @@ import Stunda from "./Stunda.js";
 import styles from "./Diena.module.css";
 
 function Diena(props) {
-    const stundasJSX = props.stundas.map((stunda, index) => {
+    const stundasJSX = props.classes.map((stunda, index) => {
         return <Stunda key={index} nosaukums={stunda} />
     });
     return (

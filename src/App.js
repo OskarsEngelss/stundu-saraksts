@@ -1,63 +1,35 @@
+import { useState, useEffect } from "react";
+
 import Diena from "./Diena";
 
 function App() {
-    const visasStundas = [
-        {
-            diena: "Pirmdiena", 
-            stundas: [
-                "Latviešu valoda un literatūra",
-                "Sociālās zinības un vēsture",
-                "Sistēmu programmēšana",
-                "Sistēmu programmēšana"
-            ]
-        },
-        {
-            diena: "Otrdiena", 
-            stundas: [
-                "Latviešu valoda un literatūra",
-                "Sports",
-                "Patstāvīgais Darbs",
-                "Patstāvīgais Darbs"
-            ]
-        },
-        {
-            diena: "Trešdiena", 
-            stundas: [
-                "Valsts aizardzības mācība",
-                "Valsts aizardzības mācība",
-                "Valsts aizardzības mācība",
-                "Valsts aizardzības mācība"
-            ]
-        },
-        {
-            diena: "Ceturtdiena", 
-            stundas: [
-                "Sistēmu programmēšana",
-                "Patstāvīgais darbs",
-                "Latviešu valoda un literatūra",
-                "Sociālās zinības un vēsture"
-            ]
-        },
-        {
-            diena: "Piektdiena", 
-            stundas: [
-                "Fizika",
-                "Sistēmu programmēšana",
-                "Angļu valoda"
-            ]
-        }
-    ];
+    const [lessons, setLessons] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const dienasJSX = visasStundas.map((diena, indekss) => {
+    useEffect(() => {
+        async function getLessons() {
+            const response = await fetch("https://cheese-cake.onthewifi.com/api/lessons");
+            const data = await response.json();
+            
+            setLessons(data["IPb22"])
+            setLoading(false);
+        }
+
+        getLessons();
+    }, []);
+
+    const lessonsJSX = lessons.map((singleDay, index) => {
         return (
-            <div class="dienasDiv">
-                <Diena key={indekss} diena={diena.diena} stundas={diena.stundas} />
-            </div>
-        );
-    });
+            <>
+                {index == 5 ? <h3>Nākamā nedēļā</h3> : ""}
+                <Diena key={index} {...singleDay}/>
+            </>
+        )
+    })
+
     return (
         <>
-            {dienasJSX}
+            {loading === false ? lessonsJSX : "Loading"}
         </>
     );
 
